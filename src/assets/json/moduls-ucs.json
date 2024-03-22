@@ -1,0 +1,152 @@
+{
+  "cicles": [
+      {
+          "nomCicle": "SMX",
+          "codiCicle": "SMX",
+          "moduls": [
+              {
+                  "label": "Modul1",
+                  "value": [
+                      {
+                          "num": "UC1",
+                          "nom": "U de Ci 1"
+                      },
+                      {
+                          "num": "UC2",
+                          "nom": "U de C 2"
+                      },
+                      {
+                          "num": "UC3",
+                          "nom": "U de C 3"
+                      }
+                  ]
+              },
+              {
+                  "label": "Modul2",
+                  "value": [
+                      {
+                          "num": "UC4",
+                          "nom": "U de C 4"
+                      },
+                      {
+                          "num": "UC5",
+                          "nom": "U de C 5"
+                      },
+                      {
+                          "num": "UC6",
+                          "nom": "U de C 6"
+                      }
+                  ]
+              },
+              {
+                  "label": "Modul3",
+                  "value": [
+                      {
+                          "num": "UC7",
+                          "nom": "U de C 7"
+                      },
+                      {
+                          "num": "UC8",
+                          "nom": "U de C 8"
+                      },
+                      {
+                          "num": "UC9",
+                          "nom": "U de C 9"
+                      }
+                  ]
+              },
+              {
+                  "label": "Modul4",
+                  "value": [
+                      {
+                          "num": "UC10",
+                          "nom": "U de C 10"
+                      },
+                      {
+                          "num": "UC11",
+                          "nom": "U de C 11"
+                      },
+                      {
+                          "num": "UC12",
+                          "nom": "U de C 12"
+                      }
+                  ]
+              }
+          ]
+      },
+      {
+          "nomCicle": "ASIX",
+          "codiCicle": "ASIX",
+          "moduls": [
+              {
+                  "label": "Modul1",
+                  "value": [
+                      {
+                          "num": "UC12",
+                          "nom": "U de C 12"
+                      },
+                      {
+                          "num": "UC13",
+                          "nom": "U de C 13"
+                      },
+                      {
+                          "num": "UC14",
+                          "nom": "U de C 14"
+                      }
+                  ]
+              },
+              {
+                  "label": "Modul2",
+                  "value": [
+                      {
+                          "num": "UC15",
+                          "nom": "U de C 15"
+                      },
+                      {
+                          "num": "UC16",
+                          "nom": "U de C 16"
+                      },
+                      {
+                          "num": "UC17",
+                          "nom": "U de C 17"
+                      }
+                  ]
+              },
+              {
+                  "label": "Modul3",
+                  "value": [
+                      {
+                          "num": "UC18",
+                          "nom": "U de C 18"
+                      },
+                      {
+                          "num": "UC19",
+                          "nom": "U de C 19"
+                      },
+                      {
+                          "num": "UC20",
+                          "nom": "U de C 20"
+                      }
+                  ]
+              },
+              {
+                  "label": "Modul4",
+                  "value": [
+                      {
+                          "num": "UC21",
+                          "nom": "U de C 21"
+                      },
+                      {
+                          "num": "UC22",
+                          "nom": "U de C 22"
+                      },
+                      {
+                          "num": "UC23",
+                          "nom": "U de C 23"
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+}
