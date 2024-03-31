@@ -1,58 +1,54 @@
-
 <template>
-    <div class="card flex justify-content-center">
-        <MultiSelect v-model="selectedCities" :options="groupedCities" filter optionLabel="label" optionGroupLabel="nomCicle" optionGroupChildren="moduls" display="chip" placeholder="Selecciona mòduls" class="w-full md:w-20rem">
-            <template #optiongroup="slotProps">
-                <div class="flex align-items-center">
-                    <img :alt="slotProps.option.codiCicle" src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png" :class="`flag flag-${slotProps.option.nomCicle.toLowerCase()} mr-2`" style="width: 18px" />
-                    <div>{{ slotProps.option.codiCicle }}</div>
-                </div>
-            </template>
-        </MultiSelect>
-    </div>
-
-    <div class="card flex justify-content-center">
-        <MultiSelect v-model="selectedUCs" :options="arrayUC" optionLabel="nom" placeholder="Select UCs"
-            :maxSelectedLabels="3" class="w-full md:w-20rem" />
-    </div>
-
-    <li v-for="selectedCity in selectedCities">
-        <span>{{ selectedCity.label }}</span>
-    </li>
-    <div>{{ UCList }}</div>
-    <div>SET: {{ setUC }}</div>
+  <router-link to="/ucs">Unitats de competència</router-link>
+  <router-link to="/modules">Mòduls</router-link>
+  <router-link to="/json" v-show="$showJSONFitxerMenu">Fitxer JSON</router-link>
+  <div>
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
+  </div>
 </template>
 
+<style scoped>
+a {
+  display: inline-block;
+  background-color: black;
+  border: solid 1px black;
+  color: white;
+  padding: 5px;
+  margin: 10px;
+}
+
+a:hover,
+a.router-link-active {
+  background-color: rgb(110, 79, 13);
+}
+
+div {
+  /*border: dashed black 1px;
+    padding: 20px;*/
+  margin: 10px;
+  /*display: inline-block;*/
+}
+</style>
+
 <script setup>
-import { ref, computed } from "vue";
-import jsonData from './assets/json/moduls-ucs.json'; 
-
-const selectedCities = ref();
-const selectedUCs = ref();
-const groupedCities = ref(jsonData.cicles);
-const arrayUC = ref([]);
-const setUC = ref(new Set());
-
-
-const computedArray = computed(() => {
-    return jsonData.cicles.map(cycle => {
-      // Perform your transformation logic here
-      return `${cycle.nomCicle}`
-    });
-});
-
-const UCList = computed(() => {
-    return jsonData.cicles.map(cycle => {
-        return cycle.moduls.map(modul => {
-            return modul.value.map(uc => {
-                arrayUC.value.push(uc);
-                setUC.value.add(uc);
-                console.log(uc)
-                return `${uc}`
-        });
-    });
-});
-});
-
-
 </script>
+<style>
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+</style>

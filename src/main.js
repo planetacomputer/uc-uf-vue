@@ -3,8 +3,8 @@ import "primevue/resources/themes/aura-light-green/theme.css";
 import "primevue/resources/primevue.min.css"; /* Deprecated */
 import "primeicons/primeicons.css";
 import "./style.css";
-import "./flags.css";
 
+import { showJSONFitxerMenu } from "./config";
 import { createApp } from "vue";
 import App from "./App.vue";
 import { router } from "./router";
@@ -124,7 +124,6 @@ app.use(PrimeVue, { ripple: true  });
 app.use(ConfirmationService);
 app.use(ToastService);
 app.use(DialogService);
-app.use(router);
 
 app.directive('tooltip', Tooltip);
 app.directive('badge', BadgeDirective);
@@ -232,5 +231,6 @@ app.component('TreeTable', TreeTable);
 app.component('TriStateCheckbox', TriStateCheckbox);
 app.component('VirtualScroller', VirtualScroller);
 
-
-app.mount("#app");
+app.config.globalProperties.$showJSONFitxerMenu = showJSONFitxerMenu;
+app.use(router).mount("#app");
+export { app };
