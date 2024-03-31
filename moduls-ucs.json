@@ -1,0 +1,192 @@
+{
+    "cicles": [
+        {   
+            "nomCicle": "SMX",
+            "codiCicle": "SMX",
+            "nivell": "2",
+            "moduls": [
+                {
+                    "nomModul": "Sistemes operatius monolloc",
+                    "numModul": "0222",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0219-11_2",
+                            "nom": "Gestionar el programari de base en sistemes microinformàtics"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Xarxes locals",
+                    "numModul": "0225",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0220-11_2",
+                            "nom": "Instal·lar, configurar i verificar els elements de la xarxa local segons procediments establerts"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Aplicacions ofimàtiques",
+                    "numModul": "0223",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0221-11_2",
+                            "nom": "Gestionar aplicacions en sistemes microinfomàtics"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Muntatge i manteniment d'equips",
+                    "numModul": "0221",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0953-11_2",
+                            "nom": "Muntar equips microinformàtics"
+                        },
+                        {
+                            "num": "UC_2-0954-11_2",
+                            "nom": "Reparar i ampliar equipament"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Serveis en xarxa",
+                    "numModul": "0227",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0955-11_2",
+                            "nom": "Mantenir els processos de comunicacions en xarxes locals"
+                        },
+                        {
+                            "num": "UC_2-0956-11_2",
+                            "nom": "Interconnectar xarxes privades i públiques"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Seguretat informàtica",
+                    "numModul": "0226",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0957-11_2",
+                            "nom": "Mantenir i regular el subsistema físic en sistemes informàtics."
+                        },
+                        {
+                            "num": "UC_2-0958-11_2",
+                            "nom": "Executar procediments d'administració i manteniment en el programari base i d'aplicació de client"
+                        },
+                        {
+                            "num": "UC_2-0959-11_2",
+                            "nom": "Mantenir la seguretat dels subsistemes físics i lògics en sistemes informàtics."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nomCicle": "ASIX",
+            "codiCicle": "ASIX",
+            "nivell": "3",
+            "moduls": [
+                {
+                    "nomModul": "Fonaments de maquinari",
+                    "numModul": "0371",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0223-11_3",
+                            "nom": "Configurar i explotar sistemes informàtics"
+                        },
+                        {
+                            "num": "UC_2-0484-11_3",
+                            "nom": "Administrar els dispositius maquinari del sistema"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Administració de sistemes gestors de bases de dades",
+                    "numModul": "0377",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0224-11_3",
+                            "nom": "Configurar i gestionar un sistema gestor de bases de dades."
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Gestió de bases de dades",
+                    "numModul": "0372",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0225-11_3",
+                            "nom": "Configurar i gestionar la base de dades"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Implantació de sistemes operatius.",
+                    "numModul": "0369",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0485-11_3",
+                            "nom": "Instal·lar, configurar i administrar el programari de base i d'aplicació del sistema"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Administració de sistemes operatius.",
+                    "numModul": "0374",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0485-11_3",
+                            "nom": "Instal·lar, configurar i administrar el programari de base i d'aplicació del sistema"
+                        },
+                        {
+                            "num": "UC_2-0490-11_3",
+                            "nom": "Gestionar serveis en el sistema informàtic"
+                        }
+                    ]
+                },
+                {
+                    "nomModul": "Seguretat i alta disponibilitat",
+                    "numModul": "0378",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0486-11_3",
+                            "nom": "Assegurar equips informàtics"
+                        }
+                    ]
+                    
+                },
+                {
+                    "nomModul": "Implantació d'aplicacions web",
+                    "numModul": "0376",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0493-11_3",
+                            "nom": "Implementar, verificar i documentar aplicacions web entorns Internet, intranet i extranet. "
+                        }
+                    ]
+                    
+                },
+                {
+                    "nomModul": "Serveis de xarxa i internet",
+                    "numModul": "0375",
+                    "ucs": [
+                        {
+                            "num": "UC_2-0495-11_3",
+                            "nom": "Instal·lar, configurar i administrar el programari per gestionar un entorn web"
+                        },
+                        {
+                            "num": "UC_2-0496-11_3",
+                            "nom": " Instal·lar, configurar i administrar serveis de missatgeria electrònica"
+                        },
+                        {
+                            "num": "UC_2-0497-11_3",
+                            "nom": "Instal·lar, configurar i administrar serveis de transferència d’arxius i multimèdia."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
