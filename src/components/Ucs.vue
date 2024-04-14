@@ -6,17 +6,17 @@
                     placeholder="Selecciona les unitats de competencia" :maxSelectedLabels="3"
                     class="w-full md:w-20rem" />
                 <ul class="w3-ul w3-tiny" style="width: 80%;">
-                    <li style="color: grey;" v-for="item in selectedUCs" v-on:mouseover="highlight">
-                        {{ item.fullNameUC }}
+                    <li @mouseover="hoverUCList($event, item.num)" @mouseleave="hoverOut" v-bind:id="item.num" :key="{key}" :style="modulCompletHover ? `--bcolor: #bff8e5` : `--bcolor: #ede09f`" :class="{ backcolorClassUCs: (classObject[item.num]) }" class="w3-display-container" v-for="(item, key) in selectedUCs">
+                        <span>{{ item.fullNameUC }}</span><span @mouseover.stop="hoverOut" @click="removeSelectedUC($event)" class="w3-button w3-display-right w3-tiny">&times;</span>
                     </li>
                 </ul>
             </div>
             <div class='column'>
                 <ul class="w3-ul w3-border w3-hoverable">
-                    <li>
+                    <li class="modulsCompletatsHeader">
                         <h4 class="w3-monospace">Mòduls completats <span class="w3-badge w3-sand" v-if="arrayModulsCompletats.length > 0">{{ arrayModulsCompletats.length }}</span></h4>
                     </li>
-                    <li v-for="item in arrayModulsCompletats">
+                    <li @mouseover="hoverIn($event, 1)" @mouseleave="hoverOut" :style="`--bcolor: #bff8e5`" :class="{ backcolorClass: (classObject[item]) }" v-for="item in arrayModulsCompletats">
                         {{ item }} - <span class="w3-small w3-text-gray">{{ jsonData.cicles.filter(d => d.nomCicle ===
                     item.split('|')[0].trim())[0].moduls.filter(e => e.nomModul ===
                         item.split('|')[1].trim())[0].ucs.map(e => e.num) }}</span>
@@ -24,12 +24,12 @@
                 </ul>
                 <hr />
                 <ul class="w3-ul w3-border w3-hoverable">
-                    <li>
+                    <li class="modulsIncompletatsHeader">
                         <h4 class="w3-monospace">Mòduls parcialment completats <span class="w3-badge w3-sand"
                                v-if="arrayModulsAfectats.length > 0">{{ arrayModulsAfectatsComputed.length }}</span>
                         </h4>
                     </li>
-                    <li v-for="item in arrayModulsAfectatsComputed">
+                    <li @mouseover="hoverIn($event, 0)" @mouseleave="hoverOut" :style="`--bcolor: #ede09f`" :class="{ backcolorClass: (classObject[item]) }" v-for="item in arrayModulsAfectatsComputed">
                         {{ item.split('-')[0].trim() }} - <span class="w3-small w3-text-gray">{{
                     jsonData.cicles.filter(d => d.nomCicle === item.split('|')[0].trim())[0].moduls.filter(e =>
                         e.nomModul === item.split('|')[1].split('-')[0].trim())[0].ucs.map(e => e.num) }}</span>
@@ -43,21 +43,114 @@
             <div v-show="false">{{ arrayModulsCompletatsComputed }}</div>
             <div v-show="false">{{ selectedUCs }}</div>
             <div v-show="false">{{ UCList }}</div>
-            <div v-show="false">SET: {{ setUC }}</div>
+            <div v-show="false">{{ setUC }}</div>
         </div>
     </div>
 </template>
+<style scoped>
+.backcolorClass {
+    background-color: var(--bcolor);
+}
 
+.backcolorClassUCs {
+    background-color: var(--bcolor);
+}
+
+.backcolorClassUCs:hover {
+    background-color: #ccc;
+}
+
+.modulsCompletatsHeader, .modulsCompletatsHeader:hover{
+    background-color: rgb(191, 248, 229) !important;
+}
+
+.modulsIncompletatsHeader, .modulsIncompletatsHeader:hover{
+    background-color: rgb(237, 224, 159) !important;
+}
+
+</style>
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 import jsonData from '../../public/moduls-ucs.json';
 
 const selectedUCs = ref([]);
 const arrayUC = ref([]);
-
+const modulCompletHover = ref(false);
+const classObject = reactive({})
 const setUC = ref(new Set());
 const arrayModulsAfectats = ref([]);
 const arrayModulsCompletats = ref([]);
+
+function hoverOut(event){
+    selectedUCs.value.forEach(function (item, index) {
+        classObject[item.num] = false;
+    });
+    arrayModulsAfectatsComputed.value.forEach(function (item, index) {
+        classObject[item] = false;
+    });
+    arrayModulsCompletats.value.forEach(function (item, index) {
+        classObject[item] = false;
+    });
+}
+
+function hoverUCList(event, itemnum) {
+    
+    if (event) {
+        selectedUCs.value.forEach(function (item, index) {
+            classObject[itemnum] = true;
+        });
+        let listElement = event.target;
+        //Obtenim el número de la UC
+        let ucNumber = listElement.textContent.split('|')[1].trim()
+        arrayModulsAfectatsComputed.value.forEach(function (item, index) {
+            //Find the modules in json file that are affected by the selected UC
+            let nombreModulo = item.split('|')[1].split('-')[0].trim() 
+            let nombreCiclo = item.split('|')[0].trim()
+            let afectadas = jsonData.cicles.filter(d => d.nomCicle === nombreCiclo)[0].moduls.filter(
+                e => e.nomModul === nombreModulo)[0].ucs.filter(e => e.num === ucNumber)
+            if(afectadas.length>0){
+                classObject[item] = true;
+            }
+        });
+        arrayModulsCompletats.value.forEach(function (item, index) {
+            //Find the modules in json file that are affected by the selected UC
+            let nombreModulo = item.split('|')[1].split('-')[0].trim() 
+            let nombreCiclo = item.split('|')[0].trim()
+            let completadas = jsonData.cicles.filter(d => d.nomCicle === nombreCiclo)[0].moduls.filter(
+                e => e.nomModul === nombreModulo)[0].ucs.filter(e => e.num === ucNumber)
+            if(completadas.length>0){
+                classObject[item] = true;
+            }
+        });
+    }
+}
+
+function hoverIn(event, modulComplete) {
+  if (event) {
+    modulCompletHover.value = modulComplete;
+    let listElement = event.target;
+    let arrUC = '';
+    try {  
+        arrUC = listElement.firstChild.nextElementSibling.innerHTML;  
+        selectedUCs.value.forEach(function (item, index) {
+            classObject[item.num] = false;
+        });
+        const parsedArray = JSON.parse(arrUC).map(item => `${item}`);
+        parsedArray.forEach(function (item, index) {
+            classObject[item] = true;
+        });  
+    } catch (e) {}
+  }
+}
+
+function removeSelectedUC(event) {
+    let listElement = event.target
+    listElement.parentElement.style.display='none'
+    let ucNumber = listElement.previousSibling.textContent.split('|')[1].trim()
+    selectedUCs.value = selectedUCs.value.filter(function (value, index, arr) {
+        return value.num !== ucNumber;
+    });
+}
 
 const UCList = computed(() => {
     return jsonData.cicles.map(cycle => {
